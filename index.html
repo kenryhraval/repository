@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Browser</title>
+    <title>Kravals</title>
 </head>
 <body>
-    <h1>Available Files</h1>
+    <h1>Tradi-rīdi-ralallā</h1>
     <ul id="fileList"></ul>
     <script>
         const filesFolder = './files/';
 
+        // Fetch the list of files dynamically
         async function fetchFiles() {
             try {
                 const response = await fetch(filesFolder);
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch files: ${response.statusText}`);
-                }
-
                 const html = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const links = Array.from(doc.querySelectorAll('a'));
+                const links = Array.from(new DOMParser().parseFromString(html, 'text/html').querySelectorAll('a'));
 
                 const fileList = document.getElementById('fileList');
                 links.forEach(link => {
@@ -41,6 +36,7 @@
             }
         }
 
+        // Call the function on page load
         fetchFiles();
     </script>
 </body>
