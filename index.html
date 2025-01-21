@@ -3,41 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kravals</title>
-</head>
-<body>
-    <h1>Tradi-rīdi-ralallā</h1>
-    <ul id="fileList"></ul>
+    <title>Repozitōrijs</title>
     <script>
-        const filesFolder = './files/';
+        async function listFiles() {
+            const repoOwner = 'kenryhraval';
+            const repoName = 'personal-webpage';
+            const folderPath = 'files';
 
-        // Fetch the list of files dynamically
-        async function fetchFiles() {
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+
             try {
-                const response = await fetch(filesFolder);
-                const html = await response.text();
-                const links = Array.from(new DOMParser().parseFromString(html, 'text/html').querySelectorAll('a'));
-
+                const response = await fetch(apiUrl);
+           
+                const files = await response.json();
                 const fileList = document.getElementById('fileList');
-                links.forEach(link => {
-                    const fileName = link.getAttribute('href');
-                    if (fileName !== '../') {
+
+                files.forEach(file => {
+                    if (file.type === 'file') { 
+                        const link = document.createElement('a');
+                        link.href = file.download_url;
+                        link.textContent = file.name;
+                        link.target = '_blank'; // Open in a new tab
                         const listItem = document.createElement('li');
-                        const anchor = document.createElement('a');
-                        anchor.href = `${filesFolder}${fileName}`;
-                        anchor.textContent = fileName;
-                        anchor.target = '_blank';
-                        listItem.appendChild(anchor);
+                        listItem.appendChild(link);
                         fileList.appendChild(listItem);
                     }
                 });
+
             } catch (error) {
-                console.error('Error fetching files:', error);
+                console.error('Kļūme pinesot datnes:', error);
             }
         }
 
-        // Call the function on page load
-        fetchFiles();
+        document.addEventListener('DOMContentLoaded', listFiles);
     </script>
+</head>
+<body>
+    <h1>Trādi-rīdi-ralallā</h1>
+    <ul id="fileList">Pienesu datnes... Gaidi!</ul>
 </body>
 </html>
