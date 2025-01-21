@@ -3,17 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nedrošs risinājums</title>
+    <title>List Files</title>
     <script>
-        function openFile() {
-            const fileName = document.getElementById('fileName').value.trim();
-            window.location.href = `https://raw.githubusercontent.com/kenryhraval/personal-webpage/main/files/${fileName}`;
+        async function listFiles() {
+            const repoOwner = 'kenryhraval';
+            const repoName = 'personal-webpage';
+            const folderPath = 'files';
+
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/main/${folderPath}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (response.ok) {
+                    const files = await response.json();
+                    const fileList = document.getElementById('fileList');
+                    fileList.innerHTML = '';
+
+                    files.forEach(file => {
+                        if (file.type === 'file') {
+                            const link = document.createElement('a');
+                            link.href = file.download_url;
+                            link.textContent = file.name;
+                            link.target = '_blank';
+                            const listItem = document.createElement('li');
+                            listItem.appendChild(link);
+                            fileList.appendChild(listItem);
+                        }
+                    });
+                } else {
+                    console.error('Failed to fetch files:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching files:', error);
+            }
         }
+
+        document.addEventListener('DOMContentLoaded', listFiles);
     </script>
 </head>
 <body>
-    <h1>Trādi-rīdi-ralallā</h1>
-    <input type="text" id="fileName" placeholder="noslēpums">
-    <button onclick="openFile()">aiziet</button>
+    <h1>Available Files</h1>
+    <ul id="fileList">Loading files...</ul>
 </body>
 </html>
