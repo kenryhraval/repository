@@ -29,21 +29,29 @@ h1 {
 
 ul {
     list-style-type: none;
+    padding-left: 20px;
 }
 
-li {
-    margin: 10px 0;
+ul ul {
+    margin-top: 5px;
 }
 
 a {
+    color: #007bff;
     text-decoration: none;
-    color: #3498db;
-    font-size: 1.1rem;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #2980b9;
+}
+
+span {
+    cursor: pointer;
+    color: #333;
+}
+
+li {
+    margin: 10px 0;
 }
 
 #fileList {
