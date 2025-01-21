@@ -1,6 +1,6 @@
 async function listFiles() {
     const repoOwner = 'kenryhraval';
-    const repoName = 'repository'; 
+    const repoName = 'personal-webpage'; 
     const folderName = 'files';
     const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderName}`;
 
