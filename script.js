@@ -14,16 +14,22 @@ async function listFiles(folderPath = 'files', parentList = null) {
             const listItem = document.createElement('li');
             
             if (file.type === 'file') { 
+                listItem.classList.add('file');
+
                 const link = document.createElement('a');
                 link.href = file.download_url;
                 link.textContent = file.name;
                 link.target = '_blank'; // Open in a new tab
+                
                 listItem.appendChild(link);
+
             } else if (file.type === 'dir') {
+                listItem.classList.add('folder');
                 // If it's a directory, create a folder item
                 const folderName = document.createElement('span');
                 folderName.textContent = `📁 ${file.name}`;
                 folderName.style.fontWeight = 'bold';
+
                 listItem.appendChild(folderName);
 
                 // Create a sublist for the directory content

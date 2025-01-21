@@ -1,3 +1,9 @@
+:root {
+    --main: #333;
+    --emphasize: rgb(196, 157, 3);
+    --background: rgb(255, 205, 6);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,44 +11,89 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
     background-color: #f4f4f9;
-    color: #333;
-    text-align: center;
-    padding: 20px;
+    color: var(--main);
+    text-align: left;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
 .container {
     max-width: 800px;
-    margin: 40px auto;
+    flex-basis: 800px;
+    flex-grow: 1;
+    margin: 0px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-h1 {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
+.picture-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
+
+.big-heading {
+    padding-top: 70px;
+}
+
+.big-heading h1 {
+    font-size: 2rem;
+    color: var(--emphasize);
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: var(--main);
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.half {
+    flex: 2; 
+}
+
+img.half {
+    width: 100%; 
+    object-fit: cover; 
+    flex: 5;
+}
+
+div.half {
+    padding: 10px;
+}
+
 
 ul {
     list-style-type: none;
     padding-left: 20px;
+    /* border: var(--main) 1px solid; */
 }
 
-ul ul {
+/* ul ul {
     margin-top: 5px;
-}
+} */
 
 a {
-    color: #007bff;
     text-decoration: none;
+    color: var(--main);
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: bold;
 }
 
 span {
@@ -50,8 +101,15 @@ span {
     color: #333;
 }
 
-li {
+li.file, li.folder {
     margin: 10px 0;
+    padding: 5px 10px;
+    border: var(--main) 1px solid;
+    width: 100%;
+}
+
+li.file:hover {
+    background-color: var(--background);
 }
 
 #fileList {
