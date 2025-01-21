@@ -3,46 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Files</title>
+    <title>File Browser</title>
+</head>
+<body>
+    <h1>Available Files</h1>
+    <ul id="fileList"></ul>
     <script>
-        async function listFiles() {
-            const repoOwner = 'kenryhraval';
-            const repoName = 'personal-webpage';
-            const folderPath = 'files';
+        const filesFolder = './files/';
 
-            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
-
+        async function fetchFiles() {
             try {
-                const response = await fetch(apiUrl);
-                if (response.ok) {
-                    const files = await response.json();
-                    const fileList = document.getElementById('fileList');
-                    fileList.innerHTML = '';
-
-                    files.forEach(file => {
-                        if (file.type === 'file') {
-                            const link = document.createElement('a');
-                            link.href = file.download_url;
-                            link.textContent = file.name;
-                            link.target = '_blank';
-                            const listItem = document.createElement('li');
-                            listItem.appendChild(link);
-                            fileList.appendChild(listItem);
-                        }
-                    });
-                } else {
-                    console.error('Failed to fetch files:', response.statusText);
+                const response = await fetch(filesFolder);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch files: ${response.statusText}`);
                 }
+
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const links = Array.from(doc.querySelectorAll('a'));
+
+                const fileList = document.getElementById('fileList');
+                links.forEach(link => {
+                    const fileName = link.getAttribute('href');
+                    if (fileName !== '../') {
+                        const listItem = document.createElement('li');
+                        const anchor = document.createElement('a');
+                        anchor.href = `${filesFolder}${fileName}`;
+                        anchor.textContent = fileName;
+                        anchor.target = '_blank';
+                        listItem.appendChild(anchor);
+                        fileList.appendChild(listItem);
+                    }
+                });
             } catch (error) {
                 console.error('Error fetching files:', error);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', listFiles);
+        fetchFiles();
     </script>
-</head>
-<body>
-    <h1>Available Files</h1>
-    <ul id="fileList">Loading files...</ul>
 </body>
 </html>
