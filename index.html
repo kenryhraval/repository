@@ -8,8 +8,9 @@
         async function listFiles() {
             const repoOwner = 'kenryhraval';
             const repoName = 'repository';
+            const folderName = 'files';
 
-            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents`;
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderName}`;
 
             try {
                 const response = await fetch(apiUrl);
