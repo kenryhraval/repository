@@ -40,6 +40,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -71,13 +72,15 @@ h3 {
 }
 
 img.half {
-    width: 100%; 
+    flex-basis: 80%;
+    max-width: 100%;
     object-fit: cover; 
     flex: 5;
 }
 
 div.half {
     padding: 10px;
+    min-width: 30%;
 }
 
 
