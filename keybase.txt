@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/kenryhraval
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://kravals.eu
+  * I am kenryhraval (https://keybase.io/kenryhraval) on keybase.
+  * I have a public key ASBr3l0SxqUonPE554SxP3TmvbwIFqzGpXcez6TqvzqiWgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01206bde5d12c6a5289cf139e784b13f74e6bdbc0816acc6a5771ecfa4eabf3aa25a0a",
+      "host": "keybase.io",
+      "kid": "01206bde5d12c6a5289cf139e784b13f74e6bdbc0816acc6a5771ecfa4eabf3aa25a0a",
+      "uid": "edba98c54bc1ebcca73401e470053719",
+      "username": "kenryhraval"
+    },
+    "merkle_root": {
+      "ctime": 1737809459,
+      "hash": "285a4526c95a0355205cc9571ebbc02054f7b86c4056ce3d8cd03ea169ffd96d06d20eb5de79182fba1c8cf8d1a7cb3138b99c6a6ce256bf1dcbc3cc947c4968",
+      "hash_meta": "36f11d27fdc60f65cc7c00ca46e0a3fa8508e22eaaa6de522b39415d40085baf",
+      "seqno": 26482641
+    },
+    "service": {
+      "entropy": "0HTP6x9l4jXunJTcYPo/p1kb",
+      "hostname": "kravals.eu",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.4.0"
+  },
+  "ctime": 1737809618,
+  "expire_in": 504576000,
+  "prev": "901f5019626a2e5d3dbff57c9ab7c6b8ba5cd4871d98796f535cc43bb2397a1e",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEga95dEsalKJzxOeeEsT905r28CBasxqV3Hs+k6r86oloKp3BheWxvYWTESpcCBcQgkB9QGWJqLl09v/V8mrfGuLpc1IcdmHlvU1zEO7I5eh7EIIXG99HSedvk+08+cA66VzsWXn3XkKOdHbOHAc3W1nitAgHCo3NpZ8RA2tIz4xDwR6LI+eMJnEOl5CrMxrmxKvWFFp6R7XT4Z6tk7XS0qPy2Bah2QtXkv782S0OhY05oxplG5q9l45XLAahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIOEc0jN+r2TMITA67HZcuuH/BJXas0X/i4T7ml19al/6o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kenryhraval
+
+==================================================================
